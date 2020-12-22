@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        (async () => {
+            let url = 'http://jsonplaceholder.typicode.com/users'
+            let promise = await fetch(url)
+            let json = await promise.json()
+
+            for (const obj of json) {
+                let objDom = obj.website
+                if(objDom.includes('.org') || objDom.includes('.net')) console.log(obj.name)
+            }
+        })()
+    </script>
+</body>
+</html>
