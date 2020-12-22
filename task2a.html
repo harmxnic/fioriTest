@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    (async () => {
+        let url = 'http://api.openweathermap.org/data/2.5/forecast?q=Samara&cnt=5&units=metric&appid=4b5fdceb2b4add61674918f486cbba59'
+        let response = await fetch(url)
+        let weather = await response.json()
+        let counter = 0
+        let minPressure = []
+
+        for (let i = 0; i < weather.list.length; i++) {
+            counter += weather.list[i].main.feels_like
+            minPressure.push(weather.list[i].main.pressure)
+        }
+
+        console.log(counter / weather.list.length)
+        console.log(Math.min(...minPressure))
+    })()
+</script>
+</body>
+</html>
