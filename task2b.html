@@ -13,7 +13,7 @@
             let json = await promise.json()
 
             for (const obj of json) {
-                let objDom = obj.website
+                let objDom = obj.email
                 if(objDom.includes('.org') || objDom.includes('.net')) console.log(obj.name)
             }
         })()
